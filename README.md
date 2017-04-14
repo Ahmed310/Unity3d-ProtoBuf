@@ -8,6 +8,15 @@ Protobuf Interigation in unity3d + Editor window to generate C# source code from
 * Set field in Editor window and you are good to go, click Generate C# source code from Proto code button
 
 
+set field in Editor Window
+![image](https://github.com/Ahmed310/Unity3d-ProtoBuf/blob/master/screenshots/screen1.PNG)
+
+Drag proto files in green area
+![image](https://github.com/Ahmed310/Unity3d-ProtoBuf/blob/master/screenshots/screen3.PNG)
+
+![image](https://github.com/Ahmed310/Unity3d-ProtoBuf/blob/master/screenshots/screen2.PNG)
+
+
 
 
 ## Example
