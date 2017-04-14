@@ -1,0 +1,20 @@
+package com.frag.proto.messages;
+
+option java_package = "com.frag.proto.messages";
+option java_outer_classname = "InternalMessages";
+
+message InternalMessage {
+    required string request_id = 1;
+    required InternalMessageType type = 3;
+    optional StartGame start_game = 2;
+}
+
+message StartGame {
+    required int64 player1 = 1;
+    required int64 player2 = 2;
+    required string exchange = 3;
+}
+
+enum InternalMessageType {
+    START_GAME = 1;
+}

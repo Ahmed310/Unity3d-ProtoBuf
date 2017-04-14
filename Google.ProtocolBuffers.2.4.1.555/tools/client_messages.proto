@@ -1,0 +1,136 @@
+import "models.proto";
+
+option java_package = "com.frag.proto.messages";
+option java_outer_classname = "ClientMessages";
+
+message ClientMessage {
+    required string requestId = 1;
+    required string exchange = 19;
+
+    required ClientMessageType type = 22;
+
+    optional RegisterUserRequest register_user_request = 2;
+    optional LoginUserRequest login_user_request = 3;
+    optional SelectHeroRequest select_hero_request = 4;
+    optional PurchaseHeroRequest purchase_hero_request = 5;
+    optional StartGameRequest start_game_request = 6;
+    optional DrawCardRequest draw_card_request = 7;
+    optional PlayCardRequest play_card_request = 8;
+    optional SummonMinnion summon_minnion = 9;
+    optional ScrapCardRequest scrap_card_request = 10;
+    optional BuyPackOfCardRequest buy_pack_of_card_request = 11;
+    optional BuyHeroRequest buy_hero_request = 12;
+    optional FetchFriendsFromSMRequest fetch_friends_from_social_media = 13;
+    optional FetchFriendsRequest fetch_friends_request = 14;
+    optional AddFriendRequest add_friend_request = 15;
+    optional FetchLeaderboardsRequest fetch_leaderboard_request = 16;
+    optional FetchMetaDataRequest fetch_metadata_request = 17;
+    optional PingRequest ping_request = 18;
+    optional FindOpponentRequest find_opponent_request = 20;
+    optional CancelSearchRequest cancel_search_request = 21;
+}
+
+enum ClientMessageType {
+    REGISTER_USER_REQUEST = 2;
+    LOGIN_USER_REQUEST = 3;
+    SELECT_HERO_REQUEST = 4;
+    PURCHASE_HERO_REQUEST = 5;
+    START_GAME_REQUEST = 6;
+    DRAW_CARD_REQUEST = 7;
+    PLAY_CARD_REQUEST = 8;
+    SUMMON_MINNION_REQUEST = 9;
+    SCRAP_CARD_REQUEST = 10;
+    BUY_PACK_OF_CARDS_REQUEST = 11;
+    BUY_HERO_REQUEST = 12;
+    FETCH_FRIENDS_FROM_SOCIAL_MEDIA_REQUEST = 13;
+    FETCH_FRIENDS_REQUEST = 14;
+    ADD_FRIEND_REQUEST = 15;
+    FETCH_LEADERBOARDS_REQUEST = 16;
+    FETCH_METADATA_REQUEST = 17;
+    PING_REQUEST = 18;
+    FIND_OPPONENT_REQUEST = 20;
+    CANCEL_SEARCH_REQUEST = 21;
+}
+
+message RegisterUserRequest {
+    required string user_name = 1;
+    required string hashed_password = 2;
+    required string first_name = 3;
+    required string last_name = 4;
+    required string avatar_id = 5;
+    required string device_id = 6;
+    required int32 device_type = 7;
+    required string google_id = 8;
+}
+
+
+message LoginUserRequest {
+    required string user_name = 1;
+    required string hashed_password = 2;
+}
+
+message SelectHeroRequest {
+    repeated string hero_id = 1;
+}
+
+
+message PurchaseHeroRequest {
+    required string hero_id = 1;
+}
+
+message FindOpponentRequest {
+}
+
+message StartGameRequest {
+}
+
+message DrawCardRequest {
+}
+
+message PlayCardRequest {
+    required Card card = 1;
+    optional string target_id = 2;
+}
+
+message SummonMinnion {
+    required Summoner summoner = 1;
+    optional string summoner_id = 2;
+}
+
+message ScrapCardRequest {
+    required Card card = 1;
+}
+
+message BuyPackOfCardRequest {
+    required string item_id = 1;
+    required StoreType store_type = 2;
+}
+
+message BuyHeroRequest {
+    required string heroId = 1;
+    required StoreType store_type = 2;
+}
+
+message FetchFriendsFromSMRequest {
+    required SocialMediaPlateform plateform = 1;
+}
+
+message FetchFriendsRequest {
+}
+
+
+message AddFriendRequest {
+    required string player_id = 1;
+}
+
+message FetchLeaderboardsRequest {
+}
+
+message FetchMetaDataRequest {
+}
+
+message PingRequest {
+}
+
+message CancelSearchRequest {
+}

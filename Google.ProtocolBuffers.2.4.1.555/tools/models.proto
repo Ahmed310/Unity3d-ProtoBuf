@@ -1,0 +1,62 @@
+option java_package = "com.frag.proto.messages";
+option java_outer_classname = "Models";
+
+message Card {
+    required string damage = 1;
+    required Condition condition = 2;
+    required int32 cost = 3;
+    required State state = 4;
+}
+
+
+message Player {
+    required string id = 1;
+    required int32 health = 2;
+    required string selected_hero = 3;
+    repeated Card available_cards = 4;
+    repeated Card hand = 5;
+}
+
+message Hero {
+    required string hero_id = 1;
+    repeated Card card = 2;
+}
+
+message Leaderboard {
+}
+
+message MetaData {
+    required string meta_data = 1; //can be replaced by metadata class fields
+}
+
+enum RequestType {
+    GL = 0;
+    SERVICE = 1;
+}
+
+enum Condition {
+    NONE = 0;
+    ENEMY_HEALTH_LESS_THAN_10 = 1;
+    ENEMY_OF_TYPE_CASTER = 2;
+}
+
+enum State {
+    DORMANT = 0;
+    ACTIVE = 1;
+}
+
+enum Summoner {
+    BOARD_CARD = 0;
+    HAND_CARD = 1;
+    HERO_ABILITY = 3;
+}
+
+enum StoreType {
+    GOLD_STORE = 0;
+    MONEY_STORE = 1;
+}
+
+enum SocialMediaPlateform {
+    FACEBOOK = 0;
+    TWITTER = 1;
+}

@@ -1,0 +1,145 @@
+import "models.proto";
+
+option java_package = "com.frag.proto.messages";
+option java_outer_classname = "ServerMessages";
+
+message ServerMessage {
+    required string request_id = 1;
+    required string code = 2;
+    optional string description = 18;
+    optional ServerMessageType type = 24; //TODO: replace Type field with oneof in future. OneOf is currently not supported in C#
+
+    //responses
+    optional RegisterUserResponse register_user_response = 3;
+    optional LoginUserResponse login_user_response = 4;
+    optional SelectHeroResponse select_hero_response = 5;
+    optional PurchaseHeroResponse purchase_hero_response = 6;
+    optional StartGameResponse start_game_response = 7;
+    optional DrawCardResponse draw_card_response = 8;
+    optional PlayCardResponse play_card_response = 9;
+    optional ScrapCardResponse scrap_card_response = 10;
+    optional BuyPackOfCardResponse buy_pack_of_card_response = 11;
+    optional BuyHeroResponse buy_hero_response = 12;
+    optional FetchFriendsFromSMResponse fetch_friends_from_social_media_response = 13;
+    optional FetchFriendsResponse fetch_friends_response = 14;
+    optional AddFriendResponse add_friend_response = 15;
+    optional FetchLeaderboardsResponse fetch_leaderboards_response = 16;
+    optional FetchMetaDataResponse fetch_metadata_response = 17;
+    optional FindOpponentResponse find_opponent_response = 19;
+    optional CancelSearchResponse cancel_search_response = 23;
+
+    //push messages
+    optional PingMessage ping = 20;
+    optional RestartGame restartGame = 21;
+    optional OpponentFound opponentFound = 22;
+
+}
+
+enum ServerMessageType {
+    REGISTER_USER_RESPONSE = 1;
+    LOGIN_USER_RESPONSE = 2;
+    SELECT_HERO_RESPONSE = 3;
+    PURCHASE_HERO_RESPONSE = 4;
+    START_GAME_RESPONSE = 7;
+    DRAW_CARD_RESPONSE = 8;
+    PLAY_CARD_RESPONSE = 9;
+    SCRAP_CARD_RESPONSE = 10;
+    BUY_PACK_OF_CARD_RESPONSE = 11;
+    BUY_HERO_RESPONSE = 12;
+    FETCH_FRIENDS_FROM_SOCIAL_MEDIA_RESPONSE = 13;
+    FETCH_FRIENDS_RESPONSE = 14;
+    ADD_FRIENDS_RESPONSE = 15;
+    FETCH_LEADERBOARDS_RESPONSE = 16;
+    FETCH_METADATA_RESPONSE = 17;
+    FIND_OPPONENTS_RESPONSE = 19;
+    CANCEL_SEARCH_RESPONSE = 23;
+
+    PING_MESSAGE = 24;
+    RESTART_GAME = 25;
+    OPPONENT_FOUND = 26;
+}
+
+message RegisterUserResponse {
+    required int32 metadata_version = 1;
+    required int64 user_id = 2;
+    required string exchange = 5;
+    optional string user_name = 3;
+    optional string password = 4;
+
+}
+
+message LoginUserResponse {
+    required int32 metadata_version = 1;
+    required int32 game_version = 2;
+    required string exchange = 3;
+}
+
+
+message SelectHeroResponse {
+    required string heroId = 1;
+}
+
+message PurchaseHeroResponse {
+    required Hero hero = 1;
+}
+
+message StartGameResponse {
+    repeated Card hand = 1;
+    repeated Player opponents = 2;
+}
+
+
+message DrawCardResponse {
+    required Card card = 1;
+}
+
+message PlayCardResponse {
+    required Card card = 1;
+}
+
+message ScrapCardResponse {
+    required Card card = 1;
+}
+
+message BuyPackOfCardResponse {
+}
+
+message BuyHeroResponse {
+}
+
+message FetchFriendsFromSMResponse {
+    repeated Player friends = 1;
+}
+
+message FetchFriendsResponse {
+    repeated Player friends = 1;
+}
+
+message AddFriendResponse {
+}
+
+message FetchLeaderboardsResponse {
+    required Leaderboard leaderboard = 1;
+}
+
+message FetchMetaDataResponse {
+    required MetaData metadata = 1;
+}
+
+message FindOpponentResponse {
+}
+
+message CancelSearchResponse {
+}
+
+//push messages
+message PingMessage {
+}
+
+message RestartGame {
+}
+
+message OpponentFound {
+    required int64 opponent_id = 1;
+    required string gameExchange = 2;
+}
