@@ -1,0 +1,45 @@
+import "models.proto";
+
+message ClientMessage {
+    
+
+    required ClientMessageType type = 22;
+
+    optional RegisterUserRequest register_user_request = 2;
+    optional LoginUserRequest login_user_request = 3;
+    optional AttackRequest attack_request = 4;
+
+}
+
+enum ClientMessageType {
+    REGISTER_USER_REQUEST = 2;
+    LOGIN_USER_REQUEST = 3;
+	ATTACK_REQUEST = 4;
+   
+}
+message RegisterUserRequest {
+    required string user_name = 1;
+    required string hashed_password = 2;
+    required string first_name = 3;
+    required string last_name = 4;
+    required string avatar_id = 5;
+    required string device_id = 6;
+    required int32 device_type = 7;
+    required string google_id = 8;
+}
+
+
+message LoginUserRequest {
+    required string user_name = 1;
+    required string hashed_password = 2;
+}
+
+
+
+message AttackRequest {
+   
+    required int32 damage = 1;
+    required string target_id = 2;
+}
+
+

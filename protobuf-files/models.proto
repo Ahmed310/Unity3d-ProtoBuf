@@ -1,0 +1,23 @@
+
+message Card {
+    required string id = 1;
+}
+
+
+message Player {
+    required string id = 1;
+    required int32 health = 2;
+	repeated Item items = 4; 
+}
+
+
+message Item {
+    required string item_id = 1;    
+    required string name = 3;
+    required string description = 4;
+    optional string catalog_name = 5;
+    optional string catalog_image_url = 6;
+    optional string item_image_url = 7;
+    required double price = 9;
+
+}

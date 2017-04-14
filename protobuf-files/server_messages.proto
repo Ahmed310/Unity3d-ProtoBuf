@@ -1,0 +1,42 @@
+import "models.proto";
+
+
+message ServerMessage {
+   
+    optional ServerMessageType type = 24;
+
+    //responses
+    optional RegisterUserResponse register_user_response = 1;
+    optional LoginUserResponse login_user_response = 2;
+    optional AttackResponse attack_response = 3;
+   
+
+}
+
+enum ServerMessageType {
+    REGISTER_USER_RESPONSE = 1;
+    LOGIN_USER_RESPONSE = 2;
+    ATTACK_RESPONSE = 3;
+    
+}
+
+message RegisterUserResponse {
+    required int32 metadata_version = 1;
+    optional string user_name = 2;
+    optional string password = 3;
+
+}
+
+message LoginUserResponse {
+    required int32 metadata_version = 1;
+    required int32 game_version = 2;
+}
+
+
+
+message AttackResponse {
+    required string player_id = 1;
+    required string target_id = 2;
+    required float target_hp_after_attack = 3;
+}
+
