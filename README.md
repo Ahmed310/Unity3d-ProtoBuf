@@ -27,9 +27,6 @@ Drag proto files in green area
 #### Model.proto
 
 ```csharp
-message Card {
-    required string id = 1;
-}
 
 
 message Player {
@@ -58,30 +55,17 @@ import "models.proto";
 
 message ClientMessage {
     
-
     required ClientMessageType type = 22;
-
-    optional RegisterUserRequest register_user_request = 2;
     optional LoginUserRequest login_user_request = 3;
     optional AttackRequest attack_request = 4;
 
 }
 
 enum ClientMessageType {
-    REGISTER_USER_REQUEST = 2;
-    LOGIN_USER_REQUEST = 3;
-	ATTACK_REQUEST = 4;
+    
+    LOGIN_USER_REQUEST = 1;
+	ATTACK_REQUEST = 2;
    
-}
-message RegisterUserRequest {
-    required string user_name = 1;
-    required string hashed_password = 2;
-    required string first_name = 3;
-    required string last_name = 4;
-    required string avatar_id = 5;
-    required string device_id = 6;
-    required int32 device_type = 7;
-    required string google_id = 8;
 }
 
 
@@ -97,9 +81,6 @@ message AttackRequest {
     required int32 damage = 1;
     required string target_id = 2;
 }
-
-
-
 ```
 
 
@@ -114,25 +95,17 @@ message ServerMessage {
     optional ServerMessageType type = 24;
 
     //responses
-    optional RegisterUserResponse register_user_response = 1;
-    optional LoginUserResponse login_user_response = 2;
-    optional AttackResponse attack_response = 3;
+  
+    optional LoginUserResponse login_user_response = 1;
+    optional AttackResponse attack_response = 2;
    
 
 }
 
 enum ServerMessageType {
-    REGISTER_USER_RESPONSE = 1;
-    LOGIN_USER_RESPONSE = 2;
-    ATTACK_RESPONSE = 3;
+    LOGIN_USER_RESPONSE = 1;
+    ATTACK_RESPONSE = 2;
     
-}
-
-message RegisterUserResponse {
-    required int32 metadata_version = 1;
-    optional string user_name = 2;
-    optional string password = 3;
-
 }
 
 message LoginUserResponse {
